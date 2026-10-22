@@ -11,6 +11,6 @@
     "review"
   ],
   "description": "Delegate reviews to a subscription-backed Grok web session through a local tunnel.",
-  "homepage": "https://github.com/relay-org/relay",
-  "repository": "https://github.com/relay-org/relay"
+  "homepage": "https://github.com/seungpyoson/relay",
+  "repository": "https://github.com/seungpyoson/relay"
 }

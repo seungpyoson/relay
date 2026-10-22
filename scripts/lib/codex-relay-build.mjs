@@ -6,9 +6,9 @@ import {
   renderExternalModelContractDoc,
 } from "./external-model-contracts.mjs";
 import { directApiProviderDefinitions } from "./provider-plugin-definitions.mjs";
+import { RELAY_REPOSITORY_URL } from "./repository-identity.mjs";
 
 const DIRECT_API_PROVIDERS = Object.freeze(directApiProviderDefinitions().map((provider) => provider.id));
-const REPOSITORY = "https://github.com/relay-org/relay";
 
 function readJson(path) {
   return JSON.parse(readFileSync(path, "utf8"));
@@ -27,8 +27,8 @@ function directApiManifest({ provider, displayName, sourceManifest }) {
     ...sourceManifest,
     name: codexRelayPluginName(provider),
     description: `Delegate code reviews to ${displayName} direct API from within Codex.`,
-    homepage: REPOSITORY,
-    repository: REPOSITORY,
+    homepage: RELAY_REPOSITORY_URL,
+    repository: RELAY_REPOSITORY_URL,
     skills: "./skills",
     keywords: provider === "glm"
       ? ["glm", "zai", "api", "review"]

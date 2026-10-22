@@ -4,8 +4,9 @@ import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join, relative, resolve } from "node:path";
 import { homedir } from "node:os";
 
+import { RELAY_REPOSITORY_SLUG } from "./lib/repository-identity.mjs";
+
 const MARKETPLACE = "relay-for-codex";
-const MARKETPLACE_REPOSITORY = "relay-org/relay";
 const CACHE_NAMESPACE = MARKETPLACE;
 const INTERNAL_RUNTIME_PLUGINS = new Set(["api-reviewers"]);
 const PLUGIN_DEPENDENCIES = new Map([
@@ -507,7 +508,7 @@ function pushPluginNamesAction(nextActions, pluginNames, buildAction) {
 function buildNextActions(profileSourceInfos, profiles) {
   const nextActions = [];
   if (profileSourceInfos.some((info) => !info.marketplacePresent)) {
-    nextActions.push(`Add the marketplace with \`codex plugin marketplace add ${MARKETPLACE_REPOSITORY}\`.`);
+    nextActions.push(`Add the marketplace with \`codex plugin marketplace add ${RELAY_REPOSITORY_SLUG}\`.`);
   }
   if (profileSourceInfos.some((info) => info.marketplacePresent)) {
     nextActions.push(`Refresh Git marketplace installs with \`codex plugin marketplace upgrade ${MARKETPLACE}\`.`);

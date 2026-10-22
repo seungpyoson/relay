@@ -3,6 +3,8 @@ import path from "node:path";
 import { test } from "node:test";
 import assert from "node:assert/strict";
 
+import { RELAY_REPOSITORY_SLUG, RELAY_REPOSITORY_URL } from "../../scripts/lib/repository-identity.mjs";
+
 function readJson(relPath) {
   return JSON.parse(readFileSync(relPath, "utf8"));
 }
@@ -18,7 +20,7 @@ function codexUserSelectablePlugins(plugins) {
 test("repo package and marketplace expose Relay public names", () => {
   const pkg = readJson("package.json");
   assert.equal(pkg.name, "relay");
-  assert.equal(pkg.repository.url, "https://github.com/relay-org/relay.git");
+  assert.equal(pkg.repository.url, `${RELAY_REPOSITORY_URL}.git`);
 
   const marketplace = readJson(".agents/plugins/marketplace.json");
   const userSelectablePlugins = codexUserSelectablePlugins(marketplace.plugins);
@@ -75,8 +77,8 @@ test("marketplace plugin IDs match their source manifests", () => {
     assert.equal(existsSync(manifestPath), true, `${plugin.name} manifest exists`);
     const manifest = readJson(manifestPath);
     assert.equal(manifest.name, plugin.name, `${plugin.name} manifest name matches marketplace ID`);
-    assert.equal(manifest.repository, "https://github.com/relay-org/relay", plugin.name);
-    assert.equal(manifest.homepage, "https://github.com/relay-org/relay", plugin.name);
+    assert.equal(manifest.repository, RELAY_REPOSITORY_URL, plugin.name);
+    assert.equal(manifest.homepage, RELAY_REPOSITORY_URL, plugin.name);
   }
 });
 
@@ -136,7 +138,7 @@ test("release verification guide uses Relay marketplace commands in active instr
   const activeInstructions = releaseGuide.split("## Evidence log")[0];
 
   assert.match(activeInstructions, /codex plugin marketplace remove relay-for-codex/);
-  assert.match(activeInstructions, /codex plugin marketplace add relay-org\/relay/);
+  assert.ok(activeInstructions.includes(`codex plugin marketplace add ${RELAY_REPOSITORY_SLUG}`));
   assert.match(activeInstructions, /marketplace `relay-for-codex` was added/);
   assert.doesNotMatch(activeInstructions, /codex-plugin-multi/);
 });

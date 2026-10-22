@@ -5,8 +5,8 @@
   "author": {
     "name": "relay-maintainer"
   },
-  "homepage": "https://github.com/relay-org/relay",
-  "repository": "https://github.com/relay-org/relay",
+  "homepage": "https://github.com/seungpyoson/relay",
+  "repository": "https://github.com/seungpyoson/relay",
   "license": "AGPL-3.0-only",
   "skills": "./skills",
   "keywords": [

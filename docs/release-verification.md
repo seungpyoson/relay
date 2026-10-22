@@ -39,7 +39,7 @@ It is acceptable if this reports that the marketplace is not installed.
 2. Install from GitHub:
 
 ```bash
-codex plugin marketplace add relay-org/relay
+codex plugin marketplace add seungpyoson/relay
 ```
 
 Expected: Codex reports marketplace `relay-for-codex` was added.
@@ -168,11 +168,11 @@ Fresh-install packaging check:
 
 - Isolated home: `CODEX_HOME=/tmp/codex-release-home-hDIDkd`.
 - Install command:
-  `codex plugin marketplace add relay-org/relay@feat/012-t7-6-regression-matrix`.
+  `codex plugin marketplace add seungpyoson/relay@feat/012-t7-6-regression-matrix`.
 - Result: PASS. Codex reported the marketplace was added from
-  `https://github.com/relay-org/relay.git#feat/012-t7-6-regression-matrix`.
+  `https://github.com/seungpyoson/relay.git#feat/012-t7-6-regression-matrix`.
 - Installed config recorded `source_type = "git"`,
-  `source = "https://github.com/relay-org/relay.git"`, and
+  `source = "https://github.com/seungpyoson/relay.git"`, and
   `ref = "feat/012-t7-6-regression-matrix"`.
 - Installed marketplace contained `.agents/plugins/marketplace.json` with both
   `claude` and `gemini`, both plugin manifests at version `0.1.0`, and the

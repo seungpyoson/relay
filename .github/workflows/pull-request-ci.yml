@@ -18,6 +18,7 @@ jobs:
       - run: npm run lint
       - run: npm run lint:sync
       - run: npm run lint:self-test
+      - run: node scripts/ci/check-repository-identity.mjs
 
   test:
     runs-on: ubuntu-latest
