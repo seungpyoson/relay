@@ -5,6 +5,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { buildProviderPolicyContract, CONCURRENCY_FACTS } from "../../scripts/lib/provider-route-policy.mjs";
+import { RELAY_REPOSITORY_SLUG, RELAY_REPOSITORY_URL } from "../../scripts/lib/repository-identity.mjs";
 
 const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "..");
 const DIRECT_API_RELAY_PROVIDERS = ["deepseek", "glm"];
@@ -708,7 +709,7 @@ test("README documents shipped install path, first commands, and safety posture"
   const readme = readRepoFile("README.md");
 
   assert.doesNotMatch(readme, /M0|M2\+|Planned surface/i);
-  assert.match(readme, /codex plugin marketplace add relay-org\/relay/);
+  assert.ok(readme.includes(`codex plugin marketplace add ${RELAY_REPOSITORY_SLUG}`));
   assert.match(readme, /relay-agy@relay-for-claude/);
   assert.match(readme, /\/relay-kimi:review/);
   assert.match(readme, /\/plugins/);
@@ -737,7 +738,7 @@ test("README documents host-owned pre-launch provider denials as outside compani
   assert.match(readme, /cannot emit a JobRecord/i);
   assert.match(readme, /approved provider/i);
   assert.match(readme, /local\/Codex-only review/i);
-  assert.match(readme, /https:\/\/github\.com\/relay-org\/relay\/issues\/13/);
+  assert.ok(readme.includes(`${RELAY_REPOSITORY_URL}/issues/13`));
 });
 
 test("direct API reviewer docs require explicit approval for external source transmission", () => {

@@ -15,6 +15,7 @@ import {
   renderClaudePluginManifest,
   relayPluginName,
 } from "../../scripts/lib/relay-build.mjs";
+import { RELAY_REPOSITORY_URL } from "../../scripts/lib/repository-identity.mjs";
 
 function writeStubDirectApiRuntime(pluginRoot) {
   const scriptsRoot = path.join(pluginRoot, "scripts");
@@ -231,8 +232,8 @@ test("renderClaudePluginManifest: converts Codex manifest to Claude relay plugin
 
   assert.equal(manifest.name, "relay-gemini");
   assert.equal(manifest.description, "Delegate investigation, review, and adversarial review to Gemini CLI from within Claude Code.");
-  assert.equal(manifest.repository, "https://github.com/relay-org/relay");
-  assert.equal(manifest.homepage, "https://github.com/relay-org/relay");
+  assert.equal(manifest.repository, RELAY_REPOSITORY_URL);
+  assert.equal(manifest.homepage, RELAY_REPOSITORY_URL);
   assert.equal(manifest.interface, undefined);
   assert.equal(manifest.skills, undefined);
   assert.deepEqual(manifest.author, { name: "relay-maintainer" });

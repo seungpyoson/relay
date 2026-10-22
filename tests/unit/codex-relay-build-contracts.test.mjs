@@ -7,6 +7,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 
 import { buildCodexDirectApiPlugin, buildCodexDirectApiSuite } from "../../scripts/lib/codex-relay-build.mjs";
+import { RELAY_REPOSITORY_URL } from "../../scripts/lib/repository-identity.mjs";
 
 const PROVIDER_DEFINITIONS_HELPER = path.resolve("scripts/lib/provider-plugin-definitions.mjs");
 
@@ -28,8 +29,8 @@ function writeApiReviewersSource(repoRoot) {
     description: "Delegate code reviews to direct API providers from within Codex.",
     author: { name: "relay-maintainer" },
     license: "AGPL-3.0-only",
-    homepage: "https://github.com/relay-org/relay",
-    repository: "https://github.com/relay-org/relay",
+    homepage: RELAY_REPOSITORY_URL,
+    repository: RELAY_REPOSITORY_URL,
     interface: {},
   });
   writeJson(path.join(sourceRoot, "config", "providers.json"), {

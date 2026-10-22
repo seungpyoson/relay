@@ -283,7 +283,7 @@ background terminal counts or prose.
 From Codex:
 
 ```bash
-codex plugin marketplace add relay-org/relay
+codex plugin marketplace add seungpyoson/relay
 ```
 
 Then enable the plugins you want:
@@ -307,7 +307,7 @@ claude plugin marketplace add .
 ```
 
 Because the manifest is at the repo root, the same marketplace also resolves as
-a remote `github` source (pointing at `relay-org/relay`) without a local
+a remote `github` source (pointing at `seungpyoson/relay`) without a local
 checkout. This follows from Claude Code's documented marketplace contract — a
 `github` source reads `.claude-plugin/marketplace.json` at the repo root and
 resolves each plugin's `./`-relative `source` from that marketplace root (see
@@ -514,7 +514,7 @@ Use relay-deepseek:deepseek-custom-review to review selected files.
 The slash-command files remain packaged for the intended future slash-command
 surface, except diagnostic ping command docs are deferred until upstream Codex
 registers plugin command files. The ping follow-up is tracked in
-https://github.com/relay-org/relay/issues/13. Example future
+https://github.com/seungpyoson/relay/issues/13. Example future
 command docs:
 
 ```text
@@ -602,7 +602,7 @@ inspect the terminal record.
 - **Host-owned pre-launch denials stay outside companion control.** If Codex
   blocks an external provider review before launching the companion process, the
   plugin cannot emit a JobRecord. That host-owned gap is tracked in
-  https://github.com/relay-org/relay/issues/13. Choose
+  https://github.com/seungpyoson/relay/issues/13. Choose
   an approved provider, run local/Codex-only review, or use `preflight` to
   inspect disclosure before requesting an external review.
 - **Rescue is write-capable.** Rescue modes are intended for investigation and

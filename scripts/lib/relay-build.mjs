@@ -16,8 +16,8 @@ import {
   RELAY_PROVIDER_DEFINITIONS,
   RELAY_PROVIDER_ORDER,
 } from "./provider-plugin-definitions.mjs";
+import { RELAY_REPOSITORY_URL } from "./repository-identity.mjs";
 
-const RELAY_REPOSITORY = "https://github.com/relay-org/relay";
 const RELAY_FOR_CLAUDE_MARKETPLACE = "relay-for-claude";
 const RELAY_SHARED_DIRECT_API_RUNTIME = "relay-api-reviewers";
 const CODEX_DIRECT_API_RELAY_ENTRYPOINT_COMMAND_RE =
@@ -305,8 +305,8 @@ function buildRelayDirectApiRuntimePlugin({ repoRoot, outRoot }) {
     description: "Shared hidden direct API runtime for Relay Claude Code plugins.",
     author: sourceManifest.author,
     license: sourceManifest.license,
-    homepage: RELAY_REPOSITORY,
-    repository: RELAY_REPOSITORY,
+    homepage: RELAY_REPOSITORY_URL,
+    repository: RELAY_REPOSITORY_URL,
   });
 
   rmSync(pluginRoot, { recursive: true, force: true });
@@ -349,8 +349,8 @@ export function renderClaudePluginManifest(codexManifest, { provider, descriptio
     name: relayPluginName(provider),
     ...relayRest,
     description: descriptionOverride ?? rewriteCodexHostDescription(description),
-    homepage: RELAY_REPOSITORY,
-    repository: RELAY_REPOSITORY,
+    homepage: RELAY_REPOSITORY_URL,
+    repository: RELAY_REPOSITORY_URL,
   };
 }
 
